@@ -1,0 +1,12 @@
+.qbut{
+    background-color: gray;
+    border: 0;
+}
+
+.qtext{
+    margin: 25px;
+    text-align: center;
+    justify-content: center;
+    color: gray;
+    font-weight: 750;
+}

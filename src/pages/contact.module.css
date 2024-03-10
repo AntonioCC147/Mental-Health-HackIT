@@ -1,0 +1,28 @@
+.buttonForm {
+    animation-name: jump;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.inputField {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid black !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}

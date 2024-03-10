@@ -1,0 +1,64 @@
+import { Formik } from "formik"
+import { Form, Button } from "react-bootstrap"
+import * as Yup from 'yup';
+import YupPassword from 'yup-password';
+YupPassword(Yup);
+import Swal from 'sweetalert2'
+const SignupSchema = Yup.object().shape({
+    name: Yup.string()
+        .min(4, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    password: Yup.string()
+        .min(6, 'Too Short!')
+        .minLowercase(1, 'password must contain at least 1 lower case letter')
+        .minUppercase(1, 'password must contain at least 1 upper case letter')
+        .minNumbers(1, 'password must contain at least 1 number')
+        .minSymbols(1, 'password must contain at least 1 special character')
+        .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+});
+import { TextInput } from "@/components/text-input"
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
+export default function Register() {
+    return (
+        <Formik initialValues={{ email: '', password: '', name: '' }} validationSchema={SignupSchema} onSubmit={(values) => {
+            const authentication = getAuth();
+            createUserWithEmailAndPassword(authentication, values.email, values.password)
+                .then((response) => {
+                    console.log(response)
+                })
+        }}>
+            {({ isSubmitting, handleSubmit }) => (
+                <Form onSubmit={handleSubmit}>
+
+                    <TextInput
+                        label="Email"
+                        name="email"
+                        type="email"
+                        placeholder="Your email is ...."
+                    />
+
+                    <TextInput
+                        label="Password"
+                        name="password"
+                        type="password"
+                        placeholder="Your password is ...."
+                    />
+
+                    <TextInput
+                        label="Name"
+                        name="name"
+                        type="text"
+                        placeholder="Your name is ...."
+                    />
+                    <div className="d-flex flex-row-reverse">
+                    <Button type="submit">
+                        Register
+                    </Button>
+                    </div>
+                </Form>
+            )}
+        </Formik>
+    )
+}

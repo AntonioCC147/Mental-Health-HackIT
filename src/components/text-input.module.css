@@ -1,0 +1,42 @@
+.inputGroup {
+    padding: 1rem;
+  }
+  
+  .error {
+    padding: 0.75rem;
+    color: red;
+  }
+  
+  .popupForm .error {
+    text-align: center;
+  }
+  
+  /* Styling for popup forms */
+  
+  .checkboxGroup input {
+    height: 24px;
+    width: 24px;
+    border-radius: 6px !important;
+  }
+  
+  .checkboxGroup input:checked {
+    color: red !important;
+    background-color: red !important;
+  }
+  
+  .checkboxGroup label {
+    border-bottom: 0px !important;
+    margin: auto;
+    margin-left: 12px !important;
+    transform: none !important;
+    height: 2rem !important;
+  }
+  
+  .checkboxGroup span {
+    height: 100%;
+    border-bottom: 0px !important;
+  }
+  
+  .checkboxGroup :global .hstack {
+    height: 56px;
+  }
